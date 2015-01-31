@@ -121,6 +121,10 @@
 
     <!-- Menu Toggle Script -->
     <script>
+    $("#menu-toggle-show").style('display', function(e) {
+      e.preventDefault();
+      return 'none';
+    });
     $("#menu-toggle-hide").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
@@ -135,8 +139,6 @@
             //Animation complete.
         });
     });
-    $("#menu-toggle-hide").click();
-    $("#menu-toggle-show").click()
     $("#positive").click();
     $("#negative").click();
     $("#positive").click(function(e) {
