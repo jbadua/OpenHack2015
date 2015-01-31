@@ -1,4 +1,3 @@
-// Adding 500 Data Points
 var map, positiveMap, negativeMap;
 
 var pos = [];
@@ -6,10 +5,12 @@ var neg = [];
 // Todo: use map to keep track of tweets for different tags
 
 for (var i = 0; i < tweets.length; i++) {
-  if (tweets[i].sentiment == "pos") {
-    pos.push(new google.maps.LatLng(tweets[i].lat, tweets[i].lng));
-  } else if (tweets[i].sentiment == "neg") {
-    neg.push(new google.maps.LatLng(tweets[i].lat, tweets[i].lng));
+  if (tweets[i].lat != null && tweets[i].lng != null) {
+    if (tweets[i].sentiment == "pos") {
+      pos.push(new google.maps.LatLng(tweets[i].lat, tweets[i].lng));
+    } else if (tweets[i].sentiment == "neg") {
+      neg.push(new google.maps.LatLng(tweets[i].lat, tweets[i].lng));
+    }
   }
 }
 
