@@ -1,4 +1,4 @@
-var map, positiveMap, negativeMap;
+var map, positiveMap, negativeMap, posArray, negArray;
 
 var pos = [];
 var neg = [];
@@ -45,6 +45,7 @@ function buildTweets(term) {
 }
 
 function initialize() {
+
   var mapOptions = {
     zoom: 2,
     center: new google.maps.LatLng(51.5072, -0.1275),
@@ -58,8 +59,7 @@ function initialize() {
 
   for (var key in termMap) {
     if (termMap.hasOwnProperty(key)) {
-      console.log(key);
-      $( "<span class='searchterm'>" + key + "</span>" ).appendTo( "#filters" );
+      $( "<option value=" + key + ">" + key + "</option>").appendTo( "#filter" );
     }
   }
 }
@@ -68,10 +68,12 @@ function setHeatMap(term) {
   pos = [];
   neg = [];
 
-  buildTweets(term);
-
   var posArray = new google.maps.MVCArray(pos);
   var negArray = new google.maps.MVCArray(neg);
+
+  buildTweets(term);
+
+  
 
   positiveMap = new google.maps.visualization.HeatmapLayer({
     data: posArray,
@@ -98,3 +100,16 @@ function toggleNegativeHeatmap() {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
+
+$( "#filter" )
+  .change(function () {
+    $( "#filter option:selected" ).each(function() {
+      if($( this ).text() == "All") {
+        setHeatMap(null);
+      }
+      else {
+        setHeatMap($( this ).text());
+      }
+    });
+}).change();
