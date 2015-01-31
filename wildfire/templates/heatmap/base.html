@@ -48,12 +48,12 @@
                                 </a>
                             </form>
                         </li>
+                        {% if tweets %}
                         <li>
                             <div>
                                 <div class="block-left">
                                     Positive
                                 </div>
-
                                 <div class="block-right">
                                     <label class="switch_wrap" for="positive">
                                     <input id="positive" type="checkbox" value="1" />
@@ -69,7 +69,6 @@
                                 <div class="block-left">
                                     Negative
                                 </div>
-
                                 <div class="block-right">
                                     <label class="switch_wrap" for="negative">
                                     <input id="negative" type="checkbox" value="1" />
@@ -80,6 +79,7 @@
                                 </div>
                             </div>
                         </li>
+                        {% endif %}
                         <li>
                             {% block filter %}{% endblock %}
                         </li>
