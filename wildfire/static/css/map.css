@@ -1,8 +1,13 @@
-html, body, #wrapper, #map-canvas {
+html, body, #map-canvas {
   width: 100%;
   height: 100%;
+  position: relative;
   margin: 0px;
   padding: 0px;
+}
+
+#wrapper {
+  height: 90%;
 }
 
 #panel {
