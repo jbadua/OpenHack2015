@@ -45,8 +45,8 @@ def get_tweets(s = None):
                                include_entities = True,
                                lang = "en",
                                #geocode="39.5,-98.35,1500mi",
-                               geocode="37.7833,-122.4167, 100mi",
-                               wait_on_rate_limit_notify=True).items(150):
+                               geocode="37.7833,-122.4167, 50mi",
+                               wait_on_rate_limit_notify=True).items(30):
 
         t = tweet()
         t.text = tweepy_tweet.text.encode('utf-8')
