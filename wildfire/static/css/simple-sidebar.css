@@ -273,14 +273,14 @@ body {
 }
 #search_button {
     border: 0 none;
-    background: #f3800f center no-repeat;
-    background-image: url('/../img/search_mag_glass.png') no-repeat;
+    background: #f3800f;
+    content: 'GO';
+    color: #ffffff;
     width: 35px;
     float: left;
     padding: 0;
     text-align: center;
     height: 35px;
-    cursor: pointer;
 }
 
 @media(min-width:768px) {
