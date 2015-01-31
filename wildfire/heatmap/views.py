@@ -10,7 +10,7 @@ def access_all_tweets(request):
     for t in tweet.objects.all():
         tweet_dict = {}
         tweet_dict["text"] = t.text.encode('utf-8')
-        tweet_dict["text"] = t.searchterm.encode('utf-8')
+        tweet_dict["searchterm"] = t.searchterm.encode('utf-8')
         tweet_dict["user"] = t.user.encode('utf-8')
         tweet_dict["sentiment"] = t.sentiment.encode('utf-8')
         tweet_dict["lat"] = t.lat
@@ -30,6 +30,7 @@ def access_all_tweets_json(q=''):
             tweet_dict["sentiment"] = t.sentiment.encode('utf-8')
             tweet_dict["lat"] = t.lat
             tweet_dict["lng"] = t.lng
+            tweet_dict["searchterm"] = t.searchterm.encode('utf-8')
             results.append(tweet_dict)
     return results
 

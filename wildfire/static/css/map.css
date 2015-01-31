@@ -12,9 +12,9 @@ html, body, #map-canvas {
 }
 
 #wrapper {
-  height: calc(100% - 50px);
+  height: calc(100% - 55px);
 }
 
 #map-canvas {
-  top: 50px;
+  top: 55px;
 }
