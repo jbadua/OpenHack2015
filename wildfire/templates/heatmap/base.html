@@ -124,6 +124,7 @@
 
     <!-- Menu Toggle Script -->
     <script>
+    $("#wrapper").toggleClass("toggled");
     $("#menu-toggle-hide").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
@@ -138,6 +139,8 @@
             //Animation complete.
         });
     });
+    $("#positive").click();
+    $("#negative").click();
     $("#positive").click(function(e) {
       togglePositiveHeatmap();
     });
