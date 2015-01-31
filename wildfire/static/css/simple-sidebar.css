@@ -274,7 +274,7 @@ body {
 #search_button {
     border: 0 none;
     background: #f3800f center no-repeat;
-    background-image: url('/../img/search_mag_glass.png') no-repeat;
+    background-image: url('/../static/img/small_search.png') ;
     width: 35px;
     float: left;
     padding: 0;
