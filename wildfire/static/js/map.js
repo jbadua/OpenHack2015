@@ -47,11 +47,11 @@ function buildTweets(term) {
 function initialize() {
 
   var mapOptions = {
-    zoom: 5,
-    center: new google.maps.LatLng(51.5072, -0.1275),
+    zoom: 3,
+    center: new google.maps.LatLng(32.3000, -64.7833),
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     styles: mapStyle,
-    minZoom: 5,
+    minZoom: 1,
     maxZoom: 15
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),
