@@ -64,7 +64,7 @@ DATABASES = {
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
-
+STATIC_URL = '/static/'
 LANGUAGE_CODE = 'en-us'
 
 USE_TZ = False
@@ -73,10 +73,9 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
-
-
+TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-
-STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)

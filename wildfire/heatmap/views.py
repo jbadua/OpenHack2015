@@ -1,5 +1,6 @@
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
+from django.template import RequestContext
 from heatmap.models import tweet
 import json
 
@@ -15,3 +16,6 @@ def access_all_tweets(request):
         tweet_dict["datetime"] = str(t.datetime)
         results.append(tweet_dict)
     return HttpResponse(json.dumps(results))
+
+def index(request):
+    return render_to_response("heatmap/base.html", {}, context_instance=RequestContext(request))
