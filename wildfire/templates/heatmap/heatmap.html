@@ -1,0 +1,17 @@
+{% extends "heatmap/base.html" %}
+{% block content %}
+{% load staticfiles %}
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=visualization"></script>
+<script src="{% static "js/map.js" %}"></script>
+<link href="{% static "css/map.css" %}" rel="stylesheet"></link>
+
+<div id="panel">
+    <button onclick="toggleHeatmap()">Toggle Heatmap</button>
+    <button onclick="changeGradient()">Change gradient</button>
+    <button onclick="changeRadius()">Change radius</button>
+    <button onclick="changeOpacity()">Change opacity</button>
+</div>
+
+<div id="map-canvas"></div>
+
+{% endblock %}

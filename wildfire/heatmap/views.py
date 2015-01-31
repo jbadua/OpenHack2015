@@ -19,3 +19,6 @@ def access_all_tweets(request):
 
 def index(request):
     return render_to_response("heatmap/home.html", {}, context_instance=RequestContext(request))
+
+def heatmap(request):
+    return render_to_response("heatmap/heatmap.html", {}, context_instance=RequestContext(request))
