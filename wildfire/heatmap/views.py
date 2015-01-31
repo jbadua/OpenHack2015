@@ -40,8 +40,8 @@ def heatmap(request):
 def twitter_input(request):
     if request.method != 'POST':
         try:
-            get_tweets(request.GET['term'])
-        except e:
+            get_tweets(request.GET['term'], request.GET['max'])
+        except Exception as e:
             return HttpResponse(str(e))
         return HttpResponse("input submitted")
         # fix return

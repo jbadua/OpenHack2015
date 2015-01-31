@@ -35,7 +35,7 @@ except:
 
 c = classifier()
 
-def get_tweets(s = None):
+def get_tweets(s = None, items = 45):
     #counter to bypass google geocode limit
     counter = 0
     for tweepy_tweet in tweepy.Cursor(api.search,
@@ -44,9 +44,9 @@ def get_tweets(s = None):
                                result_type = "recent",
                                include_entities = True,
                                lang = "en",
-                               #geocode="39.5,-98.35,1500mi",
-                               geocode="37.7833,-122.4167, 50mi",
-                               wait_on_rate_limit_notify=True).items(30):
+                               geocode="37.7833,-122.4167,50mi",
+                               #geocode="37.7833,-122.4167, 50mi",
+                               wait_on_rate_limit_notify=True).items(items):
 
         t = tweet()
         t.text = tweepy_tweet.text.encode('utf-8')
