@@ -16,7 +16,3 @@ class classifier:
 
     def __call__(self, tweet):
         return (self.classifier.classify(extract_features(tweet.split())))
-
-c = classifier()
-print c("bad terrible")
-print c("good excellent nice")
