@@ -75,13 +75,13 @@ function setHeatMap(term) {
 
   positiveMap = new google.maps.visualization.HeatmapLayer({
     data: posArray,
-    radius: 20,
+    radius: 25,
     gradient: positiveGradient,
-    opacity: 0.5,
+    opacity: 0.5
   });
   negativeMap = new google.maps.visualization.HeatmapLayer({
     data: negArray,
-    radius: 20,
+    radius: 25,
     gradient: negativeGradient,
     opacity: 0.5
   });
