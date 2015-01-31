@@ -21,7 +21,7 @@ except:
 
 c = classifier()
 
-def get_tweets(s = 'Microsoft'):
+def get_tweets(s = None):
     #counter to bypass google geocode limit
     counter = 0
     for tweepy_tweet in tweepy.Cursor(api.search,
@@ -33,6 +33,7 @@ def get_tweets(s = 'Microsoft'):
 
         t = tweet()
         t.text = tweepy_tweet.text.encode('utf-8')
+        t.searchterm = s
         t.sentiment = c(tweepy_tweet.text).encode('utf-8')
         t.user = tweepy_tweet.user.screen_name.encode('utf-8')
         t.datetime = tweepy_tweet.created_at
@@ -47,6 +48,3 @@ def get_tweets(s = 'Microsoft'):
                 time.sleep(0.25)
                 counter = 0
         t.save()
-
-get_tweets()
-
