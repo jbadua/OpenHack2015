@@ -133,6 +133,9 @@
     <!-- Menu Toggle Script -->
     <script>
     {% if tweets %}
+    $("#menu-toggle-show").fadeOut("fast", function() {
+        //Animation complete.
+    });
     {% else %}
     $("#wrapper").toggleClass("toggled");
     {% endif %}
