@@ -50,15 +50,15 @@ function initialize() {
 
   positiveMap = new google.maps.visualization.HeatmapLayer({
     data: posArray,
-    radius: 20,
+    radius: 25,
     gradient: positiveGradient,
-    opacity: .5
+    opacity: .6
   });
   negativeMap = new google.maps.visualization.HeatmapLayer({
     data: negArray,
-    radius: 20,
+    radius: 25,
     gradient: negativeGradient,
-    opacity: .5
+    opacity: .6
   });
 
   positiveMap.setMap(map);
