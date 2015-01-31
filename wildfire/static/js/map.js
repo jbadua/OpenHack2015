@@ -7,12 +7,12 @@ var neg = [];
 var termMap = {}
 
 var positiveGradient = [
-  'rgba(57, 133, 69, 0)',
-  'rgba(44, 101, 75, 1)',
-  'rgba(21, 66, 94, 1)',
-  'rgba(0, 0, 200, 1)',
-  'rgba(0, 0, 225, 1)',
-  'rgba(0, 0, 240, 1)',
+  'rgba(55, 149, 245, 0)',
+  'rgba(40, 80, 246, 1)',
+  'rgba(30, 40, 247, 1)',
+  'rgba(0, 0, 249, 1)',
+  'rgba(0, 0, 250, 1)',
+  'rgba(0, 0, 253, 1)',
   'rgba(0, 0, 255, 1)'
 ];
 
@@ -48,9 +48,9 @@ function initialize() {
   var mapOptions = {
     zoom: 2,
     center: new google.maps.LatLng(51.5072, -0.1275),
-     mapTypeId: google.maps.MapTypeId.ROADMAP
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    styles: mapStyle
   };
-
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
 
