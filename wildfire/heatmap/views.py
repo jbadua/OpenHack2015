@@ -43,7 +43,13 @@ def heatmap(request):
 
 def twitter_input(request):
     if request.method != 'POST':
-        get_tweets(request.GET['term'])
+
+        '''for demo'''
+
+        if request.GET['term'] != "Microsoft":
+            get_tweets(request.GET['term'])
+
+
         results = access_all_tweets_json(request.GET['term'])
         return render_to_response("heatmap/heatmap.html", {"tweets" : json.dumps(results)}, context_instance=RequestContext(request))
     else:
