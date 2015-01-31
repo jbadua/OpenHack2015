@@ -1,29 +1,12 @@
 import tweepy
 import json
+import math
 import time
-from classifier import classifier
+import random
+from classifier import Classifier
 from pygeocoder import Geocoder
 from models import tweet
-
-# Oauth2
-
-consumer_key = '5xexsRJABVUKsoLZhGUDElKrg'
-consumer_secret = 'LXOtAnZQpTsid3FyYb7fNNDxcnXqxzbvqFt02dieDE60nbSIsO'
-access_token = '989863279-rcASOGkZxbZXzRd6S6OPlVfCbzNHsPCD0oJHTmeP'
-access_token_secret = 'VxKLxNuOgpVeoFXrbF495fSeJiKjZB2ZukbHGN9mdTkVK'
-
-'''
-consumer_key = '1RXXDQ3SLzehbZN7BsEEtaKSH'
-consumer_secret = 'apYkynrSy3QoWlnFwOsDHfjEDYJsZWanitEeNTijfHVmSOuNJ9'
-access_token = '193893228-huzd54cY9JAgn8oUjTLfX8JqJEw5QDnqVEiAeNhw'
-access_token_secret = 'ZU2bG3lKH28CcFO3AiWM9GNu2NMEnU97llJyebd7DLevW'
-'''
-'''
-consumer_key = 'le4suBUUdkxInMWj5LJobEA7T'
-consumer_secret = 'K4HH6tmOtIwc9rQav328UR8IbhqhlDrXaA9X9Xwlc41T5Fusgs'
-access_token = '3004587368-MU18bd5RAPwFYFULqPjpqHCACxEgaFveHrMcT3H'
-access_token_secret = 'l1GTfnKxFVuT1c2L4zkOmsmyPpdAeeuwkYTkWK1HTtLKl'
-'''
+from confidential import consumer_key, consumer_secret, access_token, access_token_secret
 
 # authentication
 try:
@@ -33,35 +16,74 @@ try:
 except:
     print 'Error - failure to initialize tweepy'
 
-c = classifier()
+c = Classifier()
 
+# def get_tweets(s = None, items = 45):
+#     #counter to bypass google geocode limit
+#     counter = 0
+#     for tweepy_tweet in tweepy.Cursor(api.search,
+#                                q = s,
+#                                rpp = 100,
+#                                result_type = "recent",
+#                                include_entities = True,
+#                                lang = "en").items(items):
+#
+#         t = tweet()
+#         t.text = tweepy_tweet.text.encode('utf-8')
+#         t.searchterm = s
+#         t.sentiment = c(tweepy_tweet.text).encode('utf-8')
+#         t.user = tweepy_tweet.user.screen_name.encode('utf-8')
+#         t.datetime = tweepy_tweet.created_at
+#         if tweepy_tweet.user.location is not None:
+#             try:
+#                 loc = Geocoder.geocode(tweepy_tweet.user.location)
+#                 t.lat = loc[0].coordinates[0]
+#                 t.lng = loc[0].coordinates[1]
+#             except:
+#                 pass
+#             if counter == 5:
+#                 time.sleep(0.25)
+#                 counter = 0
+#         t.save()
 def get_tweets(s = None, items = 45):
-    #counter to bypass google geocode limit
-    counter = 0
-    for tweepy_tweet in tweepy.Cursor(api.search,
-                               q = s,
-                               rpp = 100,
-                               result_type = "recent",
-                               include_entities = True,
-                               lang = "en",
-                               geocode="37.7833,-122.4167,50mi",
-                               #geocode="37.7833,-122.4167, 50mi",
-                               wait_on_rate_limit_notify=True).items(items):
-
+    return
+    cities = [
+        {'lat': 47.37, 'lng': -122.20, 'r': 2},
+        {'lat': 37.47, 'lng': -122.26, 'r': .3},
+        {'lat': 34.03, 'lng': -118.11, 'r': 1},
+        {'lat': 40.47, 'lng': -73.58, 'r': 1},
+        {'lat': 32.46, 'lng': -96.46, 'r': 3},
+        {'lat': 41.50, 'lng': -87.37, 'r': 1},
+        {'lat': 41.28, 'lng': -87.37, 'r': 1},
+        {'lat': 39.45, 'lng': -105, 'r': 10},
+        {'lat': 39.18, 'lng': -76.38, 'r': 1},
+        {'lat': 45.31, 'lng': -122.41, 'r': 1},
+    ]
+    terms = [
+        'Microsoft',
+        'Apple',
+        'Democrat',
+        'Republican',
+        'Obama',
+        'Ferguson',
+        'Windows',
+        'Mac',
+        'Linux',
+        'Starbucks',
+    ]
+    for i in range(50000):
         t = tweet()
-        t.text = tweepy_tweet.text.encode('utf-8')
-        t.searchterm = s
-        t.sentiment = c(tweepy_tweet.text).encode('utf-8')
-        t.user = tweepy_tweet.user.screen_name.encode('utf-8')
-        t.datetime = tweepy_tweet.created_at
-        if(tweepy_tweet.user.location is not None):
-            try:
-                loc = Geocoder.geocode(tweepy_tweet.user.location)
-                t.lat = loc[0].coordinates[0]
-                t.lng = loc[0].coordinates[1]
-            except:
-                pass
-            if counter == 5:
-                time.sleep(0.25)
-                counter = 0
+        t.text = terms[int(random.random() * 10)]
+        t.searchterm = t.text
+        if random.random() < 0.8:
+            t.sentiment = 'pos'
+        else:
+            t.sentiment = 'neg'
+        t.user = ''
+        t.datetime = ''
+        r = int(random.random() * 10)
+        radius = random.random() * cities[r]['r']
+        angle = random.random() * 2 * math.pi
+        t.lat = str(cities[r]["lat"] + math.cos(angle) * radius)
+        t.lng = str(cities[r]["lng"] + math.sin(angle) * radius)
         t.save()

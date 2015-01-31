@@ -19,33 +19,32 @@ def access_all_tweets(request):
         results.append(tweet_dict)
     return HttpResponse(json.dumps(results))
 
+def access_all_tweets_json(q=''):
+    results = []
+    print q
+    print len(tweet.objects.all())
+    for t in tweet.objects.all():
+        tweet_dict = {}
+        print t.text
+        if q in t.text:
+            tweet_dict["sentiment"] = t.sentiment.encode('utf-8')
+            tweet_dict["lat"] = t.lat
+            tweet_dict["lng"] = t.lng
+            results.append(tweet_dict)
+    return results
 
 def index(request):
     return render_to_response("heatmap/home.html", {}, context_instance=RequestContext(request))
 
 def heatmap(request):
-    results = []
-    for t in tweet.objects.all():
-        tweet_dict = {}
-        tweet_dict["text"] = t.text.encode('utf-8')
-        tweet_dict["text"] = t.searchterm.encode('utf-8')
-        tweet_dict["user"] = t.user.encode('utf-8')
-        tweet_dict["sentiment"] = t.sentiment.encode('utf-8')
-        tweet_dict["lat"] = t.lat
-        tweet_dict["lng"] = t.lng
-        tweet_dict["datetime"] = str(t.datetime)
-        results.append(tweet_dict)
+    results = access_all_tweets_json()
     return render_to_response("heatmap/heatmap.html", {"tweets" : json.dumps(results)}, context_instance=RequestContext(request))
 
 def twitter_input(request):
     if request.method != 'POST':
-        try:
-            get_tweets(request.GET['term'], request.GET['max'])
-        except Exception as e:
-            return HttpResponse(str(e))
-        return HttpResponse("input submitted")
-        # fix return
-        #return access_all_tweets(request)
+        get_tweets(request.GET['term'])
+        results = access_all_tweets_json(request.GET['term'])
+        return render_to_response("heatmap/heatmap.html", {"tweets" : json.dumps(results)}, context_instance=RequestContext(request))
     else:
         # fix CsrfViewMiddleware
         get_tweets(request.POST['term'])

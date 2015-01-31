@@ -28,34 +28,79 @@
             <div class="sidebar-brand">
                 <img src= "{% static 'img/wildfire_square.png' %}" alt="WF_Logo" height="220" width="220">
             </div>
-            <ul class="sidebar-nav">
-                <li>
-                    <a href="#">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#">Shortcuts</a>
-                </li>
-                <li>
-                    <a href="#">Overview</a>
-                </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
+            <div>
+                <div class="block-left">
+                    <ul class="sidebar-nav">
+                        <li id="search">
+                            <form action="input" method="get">
+                                <input type="text" name="term" id="term" />
+                                <input type="button" name="search_button" id="search_button">
+                                </a>
+                            </form>
+                        </li>
+                        <li>
+                            <div>
+                                <div class="block-left">
+                                    Positive
+                                </div>
+
+                                <div class="block-right">
+                                    <label class="switch_wrap" for="positive">
+                                    <input id="positive" type="checkbox" value="1" />
+                                        <div class="switch">
+                                            <span class="bullet"></span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <div class="block-left">
+                                    Negative
+                                </div>
+
+                                <div class="block-right">
+                                    <label class="switch_wrap" for="negative">
+                                    <input id="negative" type="checkbox" value="1" />
+                                        <div class="switch">
+                                            <span class="bullet"></span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sidebar-bottom-nav">
+                <ul class="sidebar-nav">
+                    <li>
+                        <a href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'heatmap' %}">Map</a>
+                    </li>
+                    <li>
+                        <a href="#menu-toggle-hide" id="menu-toggle-hide">Exit</a>
+                    </li>
+                </ul>
+            </div>
         </div>
         <!-- /#sidebar-wrapper -->
 
         <div id="topbar">
-            <img src= "{% static 'img/wildfire_long.png' %}" height="50">
+            <div class="topbar-left">
+                <ul class="sidebar-nav2">
+                    <li>
+                        <a href="#menu-toggle-show" id="menu-toggle-show">MENU</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="topbar-right">
+                <img src= "{% static 'img/wildfire_long.png' %}" height="35">
+            </div>
         </div>
 
 
@@ -76,9 +121,27 @@
 
     <!-- Menu Toggle Script -->
     <script>
-    $("#menu-toggle").click(function(e) {
+    $("#menu-toggle-hide").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
+        $("#menu-toggle-show").fadeIn("slow", function() {
+            //Animation complete.
+        });
+    });
+    $("#menu-toggle-show").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+        $("#menu-toggle-show").fadeOut("slow", function() {
+            //Animation complete.
+        });
+    });
+    $("#positive").click();
+    $("#negative").click();
+    $("#positive").click(function(e) {
+      togglePositiveHeatmap();
+    });
+    $("#negative").click(function(e) {
+      toggleNegativeHeatmap();
     });
     </script>
 

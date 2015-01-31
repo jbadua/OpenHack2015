@@ -8,7 +8,6 @@ html, body, #map-canvas {
 
 #topbar {
   background-color:#000;
-  float:right;
   width:100%;
 }
 
@@ -16,13 +15,6 @@ html, body, #map-canvas {
   height: calc(100% - 50px);
 }
 
-#panel {
-  position: absolute;
-  top: 5px;
-  left: 50%;
-  margin-left: -180px;
-  z-index: 5;
-  background-color: #fff;
-  padding: 0px;
-  border: 1px solid #999;
+#map-canvas {
+  top: 50px;
 }
