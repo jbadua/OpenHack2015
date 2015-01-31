@@ -68,12 +68,15 @@ function setHeatMap(term) {
   pos = [];
   neg = [];
 
-  var posArray = new google.maps.MVCArray(pos);
-  var negArray = new google.maps.MVCArray(neg);
+
+  if(posArray != null) while(posArray.getLength() > 0) posArray.pop(); 
+  if(negArray != null) while(negArray.getLength() > 0) negArray.pop(); 
+
 
   buildTweets(term);
 
-  
+  posArray = new google.maps.MVCArray(pos);
+  negArray = new google.maps.MVCArray(neg);
 
   positiveMap = new google.maps.visualization.HeatmapLayer({
     data: posArray,
@@ -90,6 +93,7 @@ function setHeatMap(term) {
 
   positiveMap.setMap(map);
   negativeMap.setMap(map);
+
 }
 
 function togglePositiveHeatmap() {
