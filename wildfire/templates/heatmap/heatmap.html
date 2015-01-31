@@ -1,7 +1,15 @@
 {% extends "heatmap/base.html" %}
 
 {% block filter %}
-<div id="filters"></div>
+<div>
+<select class="form-control" id='filter'>
+    <option value="one">One</option>
+    <option value="two">Two</option>
+    <option value="three">Three</option>
+    <option value="four">Four</option>
+    <option value="five">Five</option>
+</select>
+</div>
 {% endblock %}
 
 {% block content %}
