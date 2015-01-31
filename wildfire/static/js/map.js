@@ -16,14 +16,26 @@ for (var i = 0; i < tweets.length; i++) {
 
 function initialize() {
   var positiveGradient = [
-    'rgba(0, 0, 225, 0)',
+    'rgba(57, 133, 69, 0)',
+    'rgba(44, 101, 75, 1)',
+    'rgba(21, 66, 94, 1)',
+    'rgba(8, 42, 145, 1)',
+    'rgba(0, 0, 180, 1)',
+    'rgba(0, 0, 200, 1)',
+    'rgba(0, 0, 225, 1)',
     'rgba(0, 0, 240, 1)',
     'rgba(0, 0, 255, 1)'
   ];
 
   var negativeGradient = [
-    'rgba(225, 0, 0, 0)',
-    'rgba(240, 0, 0, 1)',
+    'rgba(245, 149, 55, 0)',
+    'rgba(246, 80, 40, 1)',
+    'rgba(247, 40, 30, 1)',
+    'rgba(249, 20, 15, 1)',
+    'rgba(250, 0, 0, 1)',
+    'rgba(251, 0, 0, 1)',
+    'rgba(252, 0, 0, 1)',
+    'rgba(253, 0, 0, 1)',
     'rgba(255, 0, 0, 1)'
   ];
 

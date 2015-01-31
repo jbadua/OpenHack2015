@@ -21,8 +21,11 @@ def access_all_tweets(request):
 
 def access_all_tweets_json(q=''):
     results = []
+    print q
+    print len(tweet.objects.all())
     for t in tweet.objects.all():
         tweet_dict = {}
+        print t.text
         if q in t.text:
             tweet_dict["sentiment"] = t.sentiment.encode('utf-8')
             tweet_dict["lat"] = t.lat
@@ -40,7 +43,7 @@ def heatmap(request):
 def twitter_input(request):
     if request.method != 'POST':
         get_tweets(request.GET['term'])
-        tweets = access_all_tweets_json(request.GET['term'])
+        results = access_all_tweets_json(request.GET['term'])
         return render_to_response("heatmap/heatmap.html", {"tweets" : json.dumps(results)}, context_instance=RequestContext(request))
     else:
         # fix CsrfViewMiddleware
