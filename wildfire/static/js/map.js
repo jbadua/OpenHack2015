@@ -19,7 +19,7 @@ function initialize() {
     'rgba(57, 133, 69, 0)',
     'rgba(44, 101, 75, 1)',
     'rgba(21, 66, 94, 1)',
-    'rgba(8, 42, 145, 1)',
+    'rgba(0, 0, 200, 1)',
     'rgba(0, 0, 225, 1)',
     'rgba(0, 0, 240, 1)',
     'rgba(0, 0, 255, 1)'
@@ -29,7 +29,7 @@ function initialize() {
     'rgba(245, 149, 55, 0)',
     'rgba(246, 80, 40, 1)',
     'rgba(247, 40, 30, 1)',
-    'rgba(249, 20, 15, 1)',
+    'rgba(249, 0, 0, 1)',
     'rgba(250, 0, 0, 1)',
     'rgba(253, 0, 0, 1)',
     'rgba(255, 0, 0, 1)'
@@ -51,12 +51,14 @@ function initialize() {
   positiveMap = new google.maps.visualization.HeatmapLayer({
     data: posArray,
     radius: 20,
-    gradient: positiveGradient
+    gradient: positiveGradient,
+    opacity: 8
   });
   negativeMap = new google.maps.visualization.HeatmapLayer({
     data: negArray,
     radius: 20,
-    gradient: negativeGradient
+    gradient: negativeGradient,
+    opacity: 8
   });
 
   positiveMap.setMap(map);

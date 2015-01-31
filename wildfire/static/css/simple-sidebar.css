@@ -241,7 +241,7 @@ body {
     margin: 4px;
     padding-left: 15px;
 }
-#search_text{
+#term {
     width: 140px;
     padding: 0px 0 0px 10px;
     font-size: 13px;
@@ -268,7 +268,7 @@ body {
 :-ms-input-placeholder { /* Internet Explorer 10+ */
     color: white;
 }
-#search_text:focus {
+#term:focus {
     background: #feaf62;
 }
 #search_button {
