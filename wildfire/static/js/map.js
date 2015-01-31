@@ -46,10 +46,12 @@ function buildTweets(term) {
 
 function initialize() {
   var mapOptions = {
-    zoom: 2,
+    zoom: 5,
     center: new google.maps.LatLng(51.5072, -0.1275),
     mapTypeId: google.maps.MapTypeId.ROADMAP,
-    styles: mapStyle
+    styles: mapStyle,
+    minZoom: 5,
+    maxZoom: 15
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
