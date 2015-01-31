@@ -1,6 +1,9 @@
 {% extends "heatmap/base.html" %}
 {% block content %}
 {% load staticfiles %}
+<script type="text/javascript">
+    var tweets = {{ tweets | safe }};
+</script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=visualization"></script>
 <script src="{% static "js/map.js" %}"></script>
 <link href="{% static "css/map.css" %}" rel="stylesheet"></link>

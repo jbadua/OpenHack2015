@@ -29,7 +29,8 @@ def get_tweets(s = None):
                                rpp = 100,
                                result_type = "recent",
                                include_entities = True,
-                               lang = "en").items(10):
+                               lang = "en",
+                               geocode="39.5,-98.35,1500mi").items(150):
 
         t = tweet()
         t.text = tweepy_tweet.text.encode('utf-8')
