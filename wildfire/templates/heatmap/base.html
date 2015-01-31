@@ -132,7 +132,10 @@
 
     <!-- Menu Toggle Script -->
     <script>
+    {% if tweets %}
+    {% else %}
     $("#wrapper").toggleClass("toggled");
+    {% endif %}
     $("#menu-toggle-hide").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
