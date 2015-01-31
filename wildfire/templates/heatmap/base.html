@@ -24,6 +24,13 @@
 
 <body>
 
+
+    <!-- jQuery -->
+    <script src="{% static "js/jquery.js" %}"></script>
+
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
     <div id="wrapper">
 
         <!-- Sidebar -->
@@ -37,7 +44,7 @@
                         <li id="search">
                             <form action="input" method="get">
                                 <input type="text" name="term" id="term" />
-                                <input type="button" name="search_button" id="search_button">
+                                <input value="" type="submit" name="search_button" id="search_button">
                                 </a>
                             </form>
                         </li>
@@ -122,13 +129,6 @@
 
     </div>
     <!-- /#wrapper -->
-
-    <!-- jQuery -->
-    <script src="{% static "js/jquery.js" %}"></script>
-
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{% static "js/bootstrap.min.js" %}"></script>
 
     <!-- Menu Toggle Script -->
     <script>
