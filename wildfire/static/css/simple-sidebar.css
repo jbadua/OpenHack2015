@@ -5,7 +5,9 @@
  */
 
 /* Toggle Styles */
-
+body {
+    overflow: hidden;
+}
 #wrapper {
     padding-left: 0;
     -webkit-transition: all 0.5s ease-in-out;
@@ -43,29 +45,62 @@
 
 #topbar {
     position: absolute;
+    z-index: 5;
     width: 100%;
     background: #000;
     opacity: .8;
 }
 
+.topbar-left {
+    position: absolute;
+    z-index: 6;
+    float: left;
+}
+
+.topbar-right {
+    float: right;
+    padding:10px;
+    padding-right:10px;
+}
+
+.switch_wrap input[type="checkbox"] {
+  display: none;
+}
+
+.switch_wrap input[type="checkbox"]:checked + .switch {
+  background-color: #6cbc43;
+}
+
+.switch_wrap input[type="checkbox"]:checked + .switch::before {
+  display: block;
+}
+
+.switch_wrap input[type="checkbox"]:checked + .switch::after {
+  display: none;
+}
+
+.switch_wrap input[type="checkbox"]:checked + .switch .bullet {
+  left: 33px;
+}
+
 .switch_wrap .switch {
   position: relative;
   display: inline-block;
+  opacity:1;
   width: 65px;
   height: 24px;
   line-height: 24px;
   margin-right: 1em;
   margin-top: -3px;
   vertical-align: middle;
-  background-color: #c1272d;
+  background-color: #a03030;
   border-radius: 1px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 0.5px solid rgba(0, 0, 0, 0.2);
 }
 
 .switch_wrap .switch::before,
 .switch_wrap .switch::after {
   content: 'ON';
-  display: none;
   width: 50%;
   position: absolute;
   left: -12px;
@@ -86,11 +121,10 @@
   position: relative;
   display: block;
   width: 32px;
-  height: 26px;
-  top: -2px;
-  left: -2px;
+  height: 24px;
+  top: -0.5px;
+  left: -1px;
   background-color: #f0f0f0;
-  border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 1px;
   -webkit-transition: left 0.1s linear;
   -moz-transition: left 0.1s linear;
@@ -100,35 +134,18 @@
 }
 
 .switch_wrap .switch .bullet::after {
-  margin-left: 2px;
-}
-
-.switch_wrap input[type="checkbox"] {
-  display: none;
-}
-
-.switch_wrap input[type="checkbox"]:checked ~ .switch {
-  background-color: #6cbc43;
-}
-
-.switch_wrap input[type="checkbox"]:checked ~ .switch::before {
-  display: block;
-}
-
-.switch_wrap input[type="checkbox"]:checked ~ .switch::after {
-  display: none;
-}
-
-.switch_wrap input[type="checkbox"]:checked ~ .switch .bullet {
-  left: 33px;
+    margin-left: 2px;
 }
 
 .block-left {
+    padding-top: 2px;
     float: left;
+    color: #999999;
 }
 
 .block-right {
     float: right;
+    padding-right:25px;
 }
 
 #topbar.toggled {
@@ -159,13 +176,34 @@
     right: auto;
     width: 250px;
     margin: 0;
+    padding-left: 17px;
+    list-style: none;
+    opacity: 1;
+}
+
+.sidebar-bottom-nav {
+    position: absolute;
+    bottom:15px;
+}
+
+.sidebar-nav2 {
+    position: relative;
+    top: 50%;
+    transform: translateY(20%);
+    margin: auto;
     padding-left: 15px;
     list-style: none;
-    opacity: .5;
+    opacity: 1;
 }
 
 .sidebar-nav li {
     text-indent: 20px;
+    line-height: 40px;
+    height:40px;
+}
+
+.sidebar-nav2 li {
+    text-indent: 0px;
     line-height: 40px;
 }
 
@@ -175,15 +213,74 @@
     color: #999999;
 }
 
+.sidebar-nav2 li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
 .sidebar-nav li a:hover {
     text-decoration: none;
-    color: #fff;
-    background: rgba(255,255,255,0.2);
+    color: #a03030;
+}
+
+.sidebar-nav2 li a:hover {
+    text-decoration: none;
+    color: #a03030;
 }
 
 .sidebar-nav li a:active,
 .sidebar-nav li a:focus {
     text-decoration: none;
+}
+
+/*Search bar style*/
+
+#search {
+    width: 270px;
+    margin: 4px;
+    padding-left: 15px;
+}
+#search_text{
+    width: 140px;
+    padding: 0px 0 0px 10px;
+    font-size: 13px;
+    font-family: Montserrat, sans-serif;
+    border: 0 none;
+    height: 35px;
+    margin-right: 0;
+    color: white;
+    outline: none;
+    background: #f59530;
+    float: left;
+    box-sizing: border-box;
+    transition: all 0.15s;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: white;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: white;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: white;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: white;
+}
+#search_text:focus {
+    background: #feaf62;
+}
+#search_button {
+    border: 0 none;
+    background: #f3800f center no-repeat;
+    background-image: url('/../img/search_mag_glass.png') no-repeat;
+    width: 35px;
+    float: left;
+    padding: 0;
+    text-align: center;
+    height: 35px;
+    cursor: pointer;
 }
 
 @media(min-width:768px) {
@@ -208,7 +305,7 @@
     }
 
     #page-content-wrapper {
-        padding: 20px;
+        padding: 40px;
         position: relative;
     }
 
