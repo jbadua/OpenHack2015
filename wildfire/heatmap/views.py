@@ -39,7 +39,10 @@ def heatmap(request):
 
 def twitter_input(request):
     if request.method != 'POST':
-        get_tweets(request.GET['term'])
+        try:
+            get_tweets(request.GET['term'])
+        except e:
+            return HttpResponse(str(e))
         return HttpResponse("input submitted")
         # fix return
         #return access_all_tweets(request)
