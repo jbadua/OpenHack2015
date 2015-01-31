@@ -25,6 +25,7 @@
     margin-left: -250px;
     overflow-y: auto;
     background: #000;
+    opacity: .8;
     -webkit-transition: all 0.5s linear;
     -moz-transition: all 0.5s linear;
     -o-transition: all 0.5s linear;
@@ -33,10 +34,26 @@
 
 .sidebar-brand > img {
     display: block;
-    margin: auto;
+    padding: 3px;
+    margin-top: 22px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: .9;
 }
 
-#wrapper.toggled #sidebar-wrapper {
+#topbar {
+    position: absolute;
+    text-align: right;
+    width: 100%;
+    background: #000;
+    opacity: .8;
+}
+
+#topbar.toggled {
+    padding-left: 250px;
+}
+
+#wrapper.toggled #topbar.toggled #sidebar-wrapper {
     width: 250px;
 }
 
@@ -46,7 +63,7 @@
     padding: 15px;
 }
 
-#wrapper.toggled #page-content-wrapper {
+#wrapper.toggled #topbar.toggled #page-content-wrapper {
     position: absolute;
     margin-right: -250px;
 }
@@ -60,8 +77,9 @@
     right: auto;
     width: 250px;
     margin: 0;
-    padding: 0;
+    padding-left: 15px;
     list-style: none;
+    opacity: .5;
 }
 
 .sidebar-nav li {
@@ -93,6 +111,14 @@
 
     #wrapper.toggled {
         padding-left: 0;
+    }
+
+    #topbar {
+        padding-left: 0px;
+    }
+
+    #topbar.toggle {
+        padding-left: 250px;
     }
 
     #sidebar-wrapper {
