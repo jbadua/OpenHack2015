@@ -73,6 +73,9 @@
                                 </div>
                             </div>
                         </li>
+                        <li>
+                            {% block filter %}{% endblock %}
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -87,6 +90,11 @@
                     </li>
                     <li>
                         <a href="#menu-toggle-hide" id="menu-toggle-hide">Exit</a>
+                    </li>
+                    <li>
+                      <footer style="font-size: .9em">
+                        © 2015 JARZ
+                      </footer>
                     </li>
                 </ul>
             </div>
@@ -150,5 +158,4 @@
     </script>
 
 </body>
-
 </html>

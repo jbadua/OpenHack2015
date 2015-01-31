@@ -320,3 +320,21 @@ body {
         margin-right: 0;
     }
 }
+
+#filter {
+  margin: 4px;
+  padding-left: 15px;
+  width: 175px;
+  padding: 0px 0 0px 10px;
+  font-size: 13px;
+  font-family: Montserrat, sans-serif;
+  border: 0 none;
+  height: 35px;
+  margin-right: 0;
+  color: white;
+  outline: none;
+  background: #f59530;
+  float: left;
+  box-sizing: border-box;
+  transition: all 0.15s;
+}
