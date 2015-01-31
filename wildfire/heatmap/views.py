@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from heatmap.models import tweet
 import json
+from gettweets import get_tweets
 
 def access_all_tweets(request):
     results = []
@@ -22,3 +23,16 @@ def index(request):
 
 def heatmap(request):
     return render_to_response("heatmap/heatmap.html", {}, context_instance=RequestContext(request))
+
+def twitter_input(request):
+    if request.method != 'POST':
+        get_tweets(request.GET['term'])
+
+        # fix return
+        return access_all_tweets(request)
+    else:
+        # fix CsrfViewMiddleware
+        get_tweets(request.POST['term'])
+
+        # TODO: render map
+        return access_all_tweets(request)
