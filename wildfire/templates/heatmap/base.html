@@ -32,8 +32,8 @@
                 <div class="block-left">
                     <ul class="sidebar-nav">
                         <li id="search">
-                            <form action="" method="get">
-                                <input type="text" name="search_text" id="search_text" />
+                            <form action="input" method="get">
+                                <input type="text" name="term" id="term" />
                                 <input type="button" name="search_button" id="search_button">
                                 <img src= "{% static 'img/search_mag_glass.png' %}" height="35"></a>
                             </form>
@@ -70,7 +70,6 @@
                                 </div>
                             </div>
                         </li>
-
                     </ul>
                 </div>
             </div>
@@ -78,10 +77,10 @@
             <div class="sidebar-bottom-nav">
                 <ul class="sidebar-nav">
                     <li>
-                        <a href="#">Home</a>
+                        <a href="{% url 'index' %}">Home</a>
                     </li>
                     <li>
-                        <a href="#">Map</a>
+                        <a href="{% url 'heatmap' %}">Map</a>
                     </li>
                     <li>
                         <a href="#menu-toggle-hide" id="menu-toggle-hide">Exit</a>
@@ -129,15 +128,18 @@
             //Animation complete.
         });
     });
-    </script>
-
-        <script>
     $("#menu-toggle-show").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
         $("#menu-toggle-show").fadeOut("slow", function() {
             //Animation complete.
         });
+    });
+    $("#positive").click(function(e) {
+      togglePositiveHeatmap();
+    });
+    $("#negative").click(function(e) {
+      toggleNegativeHeatmap();
     });
     </script>
 
