@@ -1,18 +1,15 @@
-var map, pointarray, positiveMap, negativeMap;
-var positive = [];
-var negative = [];
-for (var i = 0; i < positiveTweets.length; i++) {
-  var str = positiveTweets[i];
-  var obj = JSON.parse(str);
-  if (obj['lat'] != null && obj['lng'] != null) {
-    positive.push(new google.maps.LatLng(obj['lat'], obj['lng']));
-  }
-}
-for (var i = 0; i < negativeTweets.length; i++) {
-  var str = negativeTweets[i];
-  var obj = JSON.parse(str);
-  if (obj['lat'] != null && obj['lng'] != null) {
-    negative.push(new google.maps.LatLng(obj['lat'], obj['lng']));
+// Adding 500 Data Points
+var map, positiveMap, negativeMap;
+
+var pos = [];
+var neg = [];
+// Todo: use map to keep track of tweets for different tags
+
+for (var i = 0; i < tweets.length; i++) {
+  if (tweets[i].sentiment == "pos") {
+    pos.push(new google.maps.LatLng(tweets[i].lat, tweets[i].lng));
+  } else if (tweets[i].sentiment == "neg") {
+    neg.push(new google.maps.LatLng(tweets[i].lat, tweets[i].lng));
   }
 }
 
@@ -31,32 +28,29 @@ function initialize() {
 
 
   var mapOptions = {
-    zoom: 13,
-    center: new google.maps.LatLng(37.774546, -122.433523),
+    zoom: 10,
+    center: new google.maps.LatLng(37.7833, -122.4167),
      mapTypeId: google.maps.MapTypeId.ROADMAP
   };
 
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
 
-  var pointArray = new google.maps.MVCArray(positive);
+  var posArray = new google.maps.MVCArray(pos);
+  var negArray = new google.maps.MVCArray(neg);
 
   positiveMap = new google.maps.visualization.HeatmapLayer({
-    data: pointArray,
+    data: posArray,
     radius: 20,
     gradient: positiveGradient
   });
-
-  positiveMap.setMap(map);
-
-  var pointArray2 = new google.maps.MVCArray(negative);
-
   negativeMap = new google.maps.visualization.HeatmapLayer({
-    data: pointArray2,
+    data: negArray,
     radius: 20,
     gradient: negativeGradient
   });
 
+  positiveMap.setMap(map);
   negativeMap.setMap(map);
 }
 

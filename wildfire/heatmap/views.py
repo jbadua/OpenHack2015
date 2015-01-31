@@ -10,6 +10,7 @@ def access_all_tweets(request):
     for t in tweet.objects.all():
         tweet_dict = {}
         tweet_dict["text"] = t.text.encode('utf-8')
+        tweet_dict["text"] = t.searchterm.encode('utf-8')
         tweet_dict["user"] = t.user.encode('utf-8')
         tweet_dict["sentiment"] = t.sentiment.encode('utf-8')
         tweet_dict["lat"] = t.lat
@@ -18,7 +19,7 @@ def access_all_tweets(request):
         results.append(tweet_dict)
     return HttpResponse(json.dumps(results))
 
-def access_all_tweets_json(q):
+def access_all_tweets_json(q=''):
     results = []
     for t in tweet.objects.all():
         tweet_dict = {}
@@ -32,26 +33,18 @@ def access_all_tweets_json(q):
 def index(request):
     return render_to_response("heatmap/home.html", {}, context_instance=RequestContext(request))
 
-def heatmap(request, positive=None, negative=None):
-    tweets = {'positive': positive, 'negative': negative}
-    return render_to_response("heatmap/heatmap.html", tweets, context_instance=RequestContext(request))
+def heatmap(request):
+    results = access_all_tweets_json()
+    return render_to_response("heatmap/heatmap.html", {"tweets" : json.dumps(results)}, context_instance=RequestContext(request))
 
 def twitter_input(request):
     if request.method != 'POST':
         get_tweets(request.GET['term'])
         tweets = access_all_tweets_json(request.GET['term'])
-        positive = []
-        negative = []
-        for t in tweets:
-            output = json.dumps(t)
-            if t['sentiment'] == 'neg':
-                negative.append(output)
-            else:
-                positive.append(output)
-        return heatmap(request, positive, negative)
+        return render_to_response("heatmap/heatmap.html", {"tweets" : json.dumps(results)}, context_instance=RequestContext(request))
     else:
         # fix CsrfViewMiddleware
         get_tweets(request.POST['term'])
-
+        return HttpResponse("input submitted")
         # TODO: render map
-        return access_all_tweets(request)
+        #return access_all_tweets(request)
