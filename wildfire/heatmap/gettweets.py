@@ -4,12 +4,7 @@ import time
 from classifier import classifier
 from pygeocoder import Geocoder
 from models import tweet
-
-# Oauth2
-consumer_key = '5xexsRJABVUKsoLZhGUDElKrg'
-consumer_secret = 'LXOtAnZQpTsid3FyYb7fNNDxcnXqxzbvqFt02dieDE60nbSIsO'
-access_token = '989863279-rcASOGkZxbZXzRd6S6OPlVfCbzNHsPCD0oJHTmeP'
-access_token_secret = 'VxKLxNuOgpVeoFXrbF495fSeJiKjZB2ZukbHGN9mdTkVK'
+from confidential import consumer_key, consumer_secret, access_token, access_token_secret
 
 # authentication
 try:
