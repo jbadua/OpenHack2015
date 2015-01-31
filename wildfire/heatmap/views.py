@@ -19,7 +19,10 @@ def access_all_tweets(request):
     return HttpResponse(json.dumps(results))
 
 def index(request):
-    return render_to_response("heatmap/base.html", {}, context_instance=RequestContext(request))
+    return render_to_response("heatmap/home.html", {}, context_instance=RequestContext(request))
+
+def heatmap(request):
+    return render_to_response("heatmap/heatmap.html", {}, context_instance=RequestContext(request))
 
 def twitter_input(request):
     if request.method != 'POST':
