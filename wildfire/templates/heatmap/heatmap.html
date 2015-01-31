@@ -21,6 +21,9 @@
 <script src="{% static "js/mapStyle.js" %}"></script>
 <script src="{% static "js/map.js" %}"></script>
 <link href="{% static "css/map.css" %}" rel="stylesheet"></link>
-<div id="map-canvas"></div>
-
+<div id="map-canvas" style="z-index:4">
+</div>
+<div id="blah" style="position: relative; top:0px; left:15px; background: #000; opacity: 0.8; text-align:left; font-size: 0.5em; color: #fff">
+  <p style="font-weight: lighter">Positive</br>Negative</p>
+</div>
 {% endblock %}

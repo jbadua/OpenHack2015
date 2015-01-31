@@ -86,12 +86,15 @@ function setHeatMap(term) {
     opacity: 0.5
   });
 
-  negativeMap.setMap(map);
   positiveMap.setMap(map);
+  negativeMap.setMap(map);
 }
 
 function togglePositiveHeatmap() {
   positiveMap.setMap(positiveMap.getMap() ? null : map);
+  if (negativeMap.getMap()) {
+    negativeMap.setMap(map);
+  }
 }
 function toggleNegativeHeatmap() {
   negativeMap.setMap(negativeMap.getMap() ? null : map);
