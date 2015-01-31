@@ -16,16 +16,13 @@ for (var i = 0; i < negativeTweets.length; i++) {
   }
 }
 
-console.log(positive.length);
-console.log(negative.length);
-
 function initialize() {
   var positiveGradient = [
     'rgba(0, 0, 225, 0)',
     'rgba(0, 0, 240, 1)',
     'rgba(0, 0, 255, 1)'
   ];
-  
+
   var negativeGradient = [
     'rgba(225, 0, 0, 0)',
     'rgba(240, 0, 0, 1)',
